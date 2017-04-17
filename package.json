@@ -1,0 +1,11 @@
+{
+    "name": "wp-boilerplate",
+    "description": "Boilerplate for Wordpress Theme Development",
+    "version": "0.0.1",
+    "author": "J.D. Hillen",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://jdhillen@github.com/jdhillen/wp-boilerplate.git"
+    }
+}

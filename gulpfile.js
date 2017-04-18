@@ -1,7 +1,6 @@
-/* jshint node: true */
-/* global $: true */
 "use strict";
 
+/* ==|== Init =================================================================================== */
 var gulp = require( "gulp" ),
 	/** @type {Object} Loader of Gulp plugins from `package.json` */
 	$ = require( "gulp-load-plugins" )(),
@@ -49,17 +48,19 @@ var gulp = require( "gulp" ),
 		return env;
 	} ());
 
-/** Clean */
+
+/* ==|== Gulp Task : clean ====================================================================== */
 gulp.task( "clean", require( "del" ).bind( null, [ ".tmp", "dist" ] ) );
 
-/** Copy */
+
+/* ==|== Gulp Task : copy ======================================================================= */
 gulp.task( "copy", function() {
 	return gulp.src([
 		"src/*.{php,png,css}",
 		"src/assets/css/*.css",
 		"src/assets/img/**/*.{jpg,png,svg,gif,webp,ico}",
 		"src/assets/fonts/*.{woff,woff2,ttf,otf,eot,svg}",
-		"src/library/**/*.php",
+		"src/inc/**/*.php",
 		"src/page-templates/**/*.php",
 		"src/template-parts/**/*.php",
 		"src/languages/*.{po,mo,pot}"
@@ -69,19 +70,21 @@ gulp.task( "copy", function() {
 	.pipe( gulp.dest( "dist" ) );
 });
 
-/** CSS Preprocessors */
+
+/* ==|== Gulp Task : sass ======================================================================= */
 gulp.task( "sass", function () {
 	return gulp.src( "src/assets/scss/styles.scss" )
 		.pipe( $.sourcemaps.init() )
 		.pipe( $.sass() )
-		.pipe( $.sourcemaps.write( "." ) )
+		.pipe( $.sourcemaps.write( ".", {addComment: false}) )
 		.on( "error", function( e ) {
 			console.error( e );
 		})
 		.pipe( gulp.dest( "src/assets/css" ) );
 });
 
-/** STYLES */
+
+/* ==|== Gulp Task : styles ===================================================================== */
 gulp.task( "styles", [ "sass" ], function() {
 	console.log( "`styles` task run in `" + env + "` environment" );
 
@@ -99,7 +102,8 @@ gulp.task( "styles", [ "sass" ], function() {
 	.pipe( gulp.dest( "src/assets/css" ) );
 });
 
-/** JSHint */
+
+/* ==|== Gulp Task : jshint ===================================================================== */
 gulp.task( "jshint", function () {
 	/** Test all `js` files exclude those in the `lib` folder */
 	return gulp.src( "src/assets/scripts/{!(lib)/*.js,*.js}" )
@@ -108,18 +112,20 @@ gulp.task( "jshint", function () {
 		.pipe( $.jshint.reporter( "fail" ) );
 });
 
-/** Templates */
+
+/* ==|== Gulp Task : template =================================================================== */
 gulp.task( "template", function() {
 	console.log( "`template` task run in `" + env + "` environment" );
 
     var is_debug = ( env === "production" ? "false" : "true" );
 
-    return gulp.src( "src/library/is_debug.php" )
+    return gulp.src( "src/inc/is_debug.php" )
         .pipe( $.template({ is_debug: is_debug }) )
-        .pipe( gulp.dest( "src/library" ) );
+        .pipe( gulp.dest( "src/inc" ) );
 });
 
-/** Uglify */
+
+/* ==|== Gulp Task : uglify ===================================================================== */
 gulp.task( "uglify", function() {
 	return gulp.src( uglifySrc )
 		.pipe( $.concat( "scripts.min.js" ) )
@@ -127,12 +133,14 @@ gulp.task( "uglify", function() {
 		.pipe( gulp.dest( "dist/assets/js" ) );
 });
 
-/** `env` to 'production' */
+
+/* ==|== Gulp Task : envProduction ============================================================== */
 gulp.task( "envProduction", function() {
 	env = "production";
 });
 
-/** Livereload */
+
+/* ==|== Gulp Task : watch ====================================================================== */
 gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
 	var server = $.livereload;
 	server.listen();
@@ -157,7 +165,8 @@ gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
 	gulp.watch( "src/assets/js/{!(lib)/*.js,*.js}", ["jshint"] );
 });
 
-/** Build */
+
+/* ==|== Gulp Task : build ====================================================================== */
 gulp.task( "build", [
 	"envProduction",
 	"clean",
@@ -170,5 +179,6 @@ gulp.task( "build", [
 	console.log("Build is finished");
 });
 
-/** Gulp default task */
+
+/* ==|== Gulp Task : default ==================================================================== */
 gulp.task( "default", ["watch"] );

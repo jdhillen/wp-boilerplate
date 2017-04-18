@@ -1,6 +1,20 @@
-
 {
-    "esnext": true,
-    "jquery": true,
-    "node": true
+  "boss": true,
+  "browser": true,
+  "curly": true,
+  "esnext": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "expr": true,
+  "immed": true,
+  "jquery": true,
+  "noarg": true,
+  "node": true,
+  "onevar": true,
+  "quotmark": "single",
+  "smarttabs": true,
+  "strict": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true
 }

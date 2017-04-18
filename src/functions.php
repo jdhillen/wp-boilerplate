@@ -1,5 +1,5 @@
 <?php
 
-require_once "library/is-debug.php";
+require_once 'inc/is-debug.php';
 
-require_once 'library/my_functions.php';
+require_once 'inc/my_functions.php';

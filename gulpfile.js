@@ -19,14 +19,10 @@ var gulp = require( "gulp" ),
 	/** @type {Object of Array} CSS source files to concatenate and minify */
 	cssminSrc = {
 		development: [
-			/** The banner of `style.css` */
-			"src/assets/css/banner.css",
 			/** Theme style */
 			"src/assets/css/styles.css"
 		],
 		production: [
-			/** The banner of `style.css` */
-			"src/assets/css/banner.css",
 			/** Normalize */
 			"node_modules/normalize.css/normalize.css",
 			/** Theme style */
@@ -59,17 +55,18 @@ gulp.task( "clean", require( "del" ).bind( null, [ ".tmp", "dist" ] ) );
 /** Copy */
 gulp.task( "copy", function() {
 	return gulp.src([
-			"src/*.{php,png,css}",
-			"src/assets/img/**/*.{jpg,png,svg,gif,webp,ico}",
-			"src/assets/fonts/*.{woff,woff2,ttf,otf,eot,svg}",
-			"src/library/**/*.php",
-			"src/page-templates/**/*.php",
-			"src/template-parts/**/*.php",
-			"src/languages/*.{po,mo,pot}"
-		], {
-			base: "src"
-		})
-		.pipe( gulp.dest( "dist" ) );
+		"src/*.{php,png,css}",
+		"src/assets/css/*.css",
+		"src/assets/img/**/*.{jpg,png,svg,gif,webp,ico}",
+		"src/assets/fonts/*.{woff,woff2,ttf,otf,eot,svg}",
+		"src/library/**/*.php",
+		"src/page-templates/**/*.php",
+		"src/template-parts/**/*.php",
+		"src/languages/*.{po,mo,pot}"
+	], {
+		base: "src"
+	})
+	.pipe( gulp.dest( "dist" ) );
 });
 
 /** CSS Preprocessors */
@@ -99,7 +96,7 @@ gulp.task( "styles", [ "sass" ], function() {
 	return stream.on( "error", function( e ) {
 		console.error( e );
 	})
-	.pipe( gulp.dest( "src" ) );
+	.pipe( gulp.dest( "src/assets/css" ) );
 });
 
 /** JSHint */
@@ -143,8 +140,8 @@ gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
 	/** Watch for livereoad */
 	gulp.watch([
 		"src/assets/scripts/**/*.js",
-		"src/*.php",
-		"src/*.css"
+		"src/assets/css/*.css",
+		"src/*.php"
 	]).on( "change", function( file ) {
 		console.log( file.path );
 		server.changed( file.path );
@@ -152,12 +149,12 @@ gulp.task( "watch", [ "template", "styles", "jshint" ], function() {
 
 	/** Watch for autoprefix */
 	gulp.watch( [
-		"src/css/*.css",
-		"src/assets/sass/**/*.scss"
+		"src/assets/css/*.css",
+		"src/assets/scss/**/*.scss"
 	], [ "styles" ] );
 
 	/** Watch for JSHint */
-	gulp.watch( "src/js/{!(lib)/*.js,*.js}", ["jshint"] );
+	gulp.watch( "src/assets/js/{!(lib)/*.js,*.js}", ["jshint"] );
 });
 
 /** Build */

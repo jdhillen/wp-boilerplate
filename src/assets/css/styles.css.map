@@ -1,0 +1,1 @@
+{"version":3,"file":"styles.css","sources":["styles.scss"],"sourcesContent":["/**\n * styles.scss\n * ---\n * Main `sass` file. Import here `sass` files\n */\n\nbody {\n    background: #000;\n    display: block;\n    height: 100px;\n}\n"],"names":[],"mappings":"AAAA;;;;GAIG;AAEH,AAAA,IAAI,CAAC;EACD,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,KAAK,GAChB"}

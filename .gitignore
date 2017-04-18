@@ -42,4 +42,5 @@ Thumbs.db
 # Custom #
 ######################
 node_modules
+src/assets/scripts/vendor/*
 dist

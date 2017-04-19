@@ -27,10 +27,11 @@
     "jshint": "2.9.4",
     "jshint-stylish": "2.2.1",
     "modernizr": "3.5.0",
-    "normalize.css": "6.0.0"
+    "normalize.css": "6.0.0",
+    "shelljs": "0.7.7"
   },
   "scripts": {
-    "modernizr": "scripts/modernizr.sh",
+    "modernizr": "scripts/modernizr.js",
     "copy": "scripts/copy.js"
   },
   "engines": {

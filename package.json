@@ -27,17 +27,22 @@
     "jshint": "2.9.4",
     "jshint-stylish": "2.2.1",
     "modernizr": "3.5.0",
+    "node-sass": "4.5.2",
     "normalize.css": "6.0.0",
-    "shelljs": "0.7.7"
+    "shelljs": "0.7.7",
+    "stylelint": "7.10.1"
   },
   "scripts": {
-    "modernizr": "scripts/modernizr.js",
-    "copy": "scripts/copy.js",
-    "clean": "scripts/clean.js",
-    "postinstall": "npm run modernizr && npm run copy"
+    "modernizr": "bin/modernizr",
+    "copy": "bin/copy",
+    "clean": "bin/clean",
+    "postinstall": "npm run modernizr && npm run copy",
+    "watch:scss": "bin/watch-scss",
+    "build:scss": "bin/build-scss",
+    "lint:scss": "bin/lint-scss"
   },
   "engines": {
     "node": ">=7.7.2",
-    "npm": ">=4.4.1"
+    "npm": ">=4.5.0"
   }
 }

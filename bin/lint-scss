@@ -1,0 +1,1 @@
+stylelint "src/assets/scss/**/*.scss" --syntax scss

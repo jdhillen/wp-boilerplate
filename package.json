@@ -32,7 +32,9 @@
   },
   "scripts": {
     "modernizr": "scripts/modernizr.js",
-    "copy": "scripts/copy.js"
+    "copy": "scripts/copy.js",
+    "clean": "scripts/clean.js",
+    "postinstall": "npm run modernizr && npm run copy"
   },
   "engines": {
     "node": ">=7.7.2",

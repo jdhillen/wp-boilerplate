@@ -3,16 +3,16 @@
 
 
 /* ==|== Required =============================================================================== */
-var copy = require('copy');
+const copy = require('copy');
 
 
 /* ==|== Variables ============================================================================== */
-var dir = {
+let dir = {
     js: 'src/assets/scripts/vendor',
     css: 'src/assets/css/vendor'
 };
 
-var files = {
+let files = {
     js : [
         'node_modules/modernizr/modernizr.js',
         'node_modules/conditionizr/dist/conditionizr.js',
@@ -25,14 +25,20 @@ var files = {
 
 
 /* ==|== Copy NPM Javascript Files ============================================================== */
-copy.each(files.js, dir.js, {flatten: true}, function(err, js) {
-  if (err) throw err;
-  console.log('NPM Javascript Files Copied');
+copy.each(files.js, dir.js, {flatten: true}, function(err, files) {
+    if (err) throw err;
+    console.log('\nFiles Copied : Javascript');
+    for (let i = 0; i < files.length; i++) {
+        console.log( files[i].history[0] );
+    }
 });
 
 
 /* ==|== Copy NPM CSS Files ===================================================================== */
-copy.each(files.css, dir.css, {flatten: true}, function(err, js) {
-  if (err) throw err;
-    console.log('NPM CSS Files Copied');
+copy.each(files.css, dir.css, {flatten: true}, function(err, files) {
+    if (err) throw err;
+    console.log('\nFiles Copied : CSS');
+    for (let i = 0; i < files.length; i++) {
+        console.log( files[i].history[0] );
+    }
 });

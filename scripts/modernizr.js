@@ -3,7 +3,7 @@
 
 
 /* ==|== Required =============================================================================== */
-var shell = require('shelljs');
+const shell = require('shelljs');
 
 
 /* ==|== Generate a new Modernizr.js build ====================================================== */

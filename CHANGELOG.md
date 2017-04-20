@@ -1,5 +1,18 @@
-### [WP-Boilerplate](https://github.com/jdhillen/wp-boilerplate) Changelog
+# [WP-Boilerplate][] - CHANGELOG
 
-## 0.0.0 (April 17, 2017)
+All notable changes to this project will be documented in this file.
 
-    * Initial commit
+---
+
+## [Unreleased][] - 2017-04-17
+### Added
+-   Initial Commit
+
+---
+
+*The format is based on [Keep a CHANGELOG](http://keepachangelog.com)*
+
+---
+
+[WP-Boilerplate]:   https://github.com/jdhillen/wp-boilerplate
+[Unreleased]: https://github.com/jdhillen/wp-boilerplate/releases

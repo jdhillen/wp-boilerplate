@@ -3,7 +3,7 @@
 
 'use strict';
 
-let myURL = 'nullpixel.dev';
+let projectURL = 'nullpixel.dev';
 
 /* ==|== Init =================================================================================== */
 let gulp = require( 'gulp' );
@@ -45,9 +45,10 @@ let env = (function() {
 /* ==|== Gulp Task : browser-sync =============================================================== */
 gulp.task('browser-sync', function() {
     browserSync.init({
-        proxy: myURL,
-		port: 8080
-    });
+        proxy: projectURL,
+		open: true,
+		injectChanges: true,
+	});
 });
 
 
@@ -145,7 +146,7 @@ gulp.task( 'envProduction', function() {
 
 
 /* ==|== Gulp Task : watch ====================================================================== */
-gulp.task( 'watch', [ 'template', 'styles', 'jshint' ], function() {
+gulp.task( 'watch', [ 'template', 'styles', 'jshint'], function() {
 	let files = [
 		'src/assets/scripts/**/*.js',
 		'src/assets/css/*.css',
@@ -153,7 +154,9 @@ gulp.task( 'watch', [ 'template', 'styles', 'jshint' ], function() {
 	];
 
 	browserSync.init(files, {
-    	proxy: 'nullpixel.dev',
+		proxy: projectURL,
+		open: true,
+		injectChanges: true,
 	});
 
 	/** Watch for BrowserSync */

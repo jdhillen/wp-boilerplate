@@ -70,7 +70,7 @@
 
 		<?php endif; ?>
 
-			<?php get_template_part('template-parts/pagination'); ?>
+			<?php get_template_part('pagination'); ?>
 
 		</section>
 		<!-- /section -->

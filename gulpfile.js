@@ -1,54 +1,54 @@
 /* jshint node: true */
 /* global $: true */
+
 'use strict';
 
+let myURL = 'nullpixel.dev';
+
 /* ==|== Init =================================================================================== */
-var gulp = require( 'gulp' ),
-	/** @type {Object} Loader of Gulp plugins from `package.json` */
-	$ = require( 'gulp-load-plugins' )(),
-	/** @type {Array} JS source files to concatenate and uglify */
-	uglifySrc = [
-		/** Modernizr */
-		'src/assets/scripts/vendor/modernizr.js',
-		/** Conditionizr */
-		'src/assets/scripts/vendor/conditionizr.js',
-		/** jQuery */
-		'src/assets/scripts/vendor/jquery.js',
-		/** Page scripts */
-		'src/assets/scripts/scripts.js'
+let gulp = require( 'gulp' );
+let $ = require( 'gulp-load-plugins' )();
+let browserSync = require('browser-sync').create();
+
+let	uglifySrc = [
+	'src/bower_components/modernizr/modernizr.js',
+	'src/assets/scripts/vendor/jquery.js',
+	'src/assets/scripts/scripts.js'
+];
+
+let cssminSrc = {
+	development: [
+		'src/assets/css/styles.css'
 	],
-	/** @type {Object of Array} CSS source files to concatenate and minify */
-	cssminSrc = {
-		development: [
-			/** Theme style */
-			'src/assets/css/styles.css'
-		],
-		production: [
-			/** Normalize */
-			'src/assets/css/vendor/normalize.css',
-			/** Theme style */
-			'src/assets/css/styles.css'
-		]
-	},
-	/** @type {String} Used inside task for set the mode to 'development' or 'production' */
-	env = (function() {
-		/** @type {String} Default value of env */
-		var env = 'development';
+	production: [
+		'src/assets/css/vendor/normalize.css',
+		'src/assets/css/styles.css'
+	]
+};
 
-		/** Test if there was a different value from CLI to env
-			Example: gulp styles --env=production
-			When ES6 will be default. `find` will replace `some`  */
-		process.argv.some(function( key ) {
-			var matches = key.match( /^\-{2}env\=([A-Za-z]+)$/ );
+let env = (function() {
+	var env = 'development';
 
-			if ( matches && matches.length === 2 ) {
-				env = matches[1];
-				return true;
-			}
-		});
+	process.argv.some(function( key ) {
+		var matches = key.match( /^\-{2}env\=([A-Za-z]+)$/ );
 
-		return env;
-	} ());
+		if ( matches && matches.length === 2 ) {
+			env = matches[1];
+			return true;
+		}
+	});
+
+	return env;
+} ());
+
+
+/* ==|== Gulp Task : browser-sync =============================================================== */
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        proxy: myURL,
+		port: 8080
+    });
+});
 
 
 /* ==|== Gulp Task : clean ====================================================================== */
@@ -78,11 +78,12 @@ gulp.task( 'sass', function () {
 	return gulp.src( 'src/assets/scss/styles.scss' )
 		.pipe( $.sourcemaps.init() )
 		.pipe( $.sass() )
-		.pipe( $.sourcemaps.write( '.', {addComment: false}) )
+		.pipe( $.sourcemaps.write( '.' ) )
 		.on( 'error', function( e ) {
 			console.error( e );
 		})
-		.pipe( gulp.dest( 'src/assets/css' ) );
+		.pipe( gulp.dest( 'src/assets/css' ) )
+		.pipe( browserSync.stream() );
 });
 
 
@@ -99,9 +100,10 @@ gulp.task( 'styles', [ 'sass' ], function() {
 	}
 
 	return stream.on( 'error', function( e ) {
-		console.error( e );
-	})
-	.pipe( gulp.dest( 'src/assets/css' ) );
+			console.error( e );
+		})
+		.pipe( gulp.dest( 'src/assets/css' ) )
+		.pipe( browserSync.stream() );
 });
 
 
@@ -121,7 +123,7 @@ gulp.task( 'template', function() {
 
     var is_debug = ( env === 'production' ? 'false' : 'true' );
 
-    return gulp.src( 'src/inc/is_debug.php' )
+    return gulp.src( 'src/dev-templates/is-debug.php' )
         .pipe( $.template({ is_debug: is_debug }) )
         .pipe( gulp.dest( 'src/inc' ) );
 });
@@ -144,17 +146,20 @@ gulp.task( 'envProduction', function() {
 
 /* ==|== Gulp Task : watch ====================================================================== */
 gulp.task( 'watch', [ 'template', 'styles', 'jshint' ], function() {
-	var server = $.livereload;
-	server.listen();
-
-	/** Watch for livereoad */
-	gulp.watch([
+	let files = [
 		'src/assets/scripts/**/*.js',
 		'src/assets/css/*.css',
-		'src/*.php'
-	]).on( 'change', function( file ) {
-		console.log( file.path );
-		server.changed( file.path );
+		'src/**/*.php'
+	];
+
+	browserSync.init(files, {
+    	proxy: 'nullpixel.dev',
+	});
+
+	/** Watch for BrowserSync */
+	gulp.watch().on( 'change', function( file ) {
+		// console.log( file.path );
+		browserSync.notify( file.path );
 	});
 
 	/** Watch for autoprefix */
@@ -164,7 +169,7 @@ gulp.task( 'watch', [ 'template', 'styles', 'jshint' ], function() {
 	], [ 'styles' ] );
 
 	/** Watch for JSHint */
-	gulp.watch( 'src/assets/js/{!(vendor)/*.js,*.js}', ['jshint'] );
+	gulp.watch( 'src/assets/scripts/{!(vendor)/*.js,*.js}', ['jshint'] );
 });
 
 

@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [Unreleased][] - 2017-04-17
+## [0.0.0][] - 2017-04-17
 ### Added
 -   Initial Commit
 
@@ -15,4 +15,4 @@ All notable changes to this project will be documented in this file.
 ---
 
 [WP-Boilerplate]:   https://github.com/jdhillen/wp-boilerplate
-[Unreleased]: https://github.com/jdhillen/wp-boilerplate/releases
+[0.0.0]: https://github.com/jdhillen/wp-boilerplate/releases

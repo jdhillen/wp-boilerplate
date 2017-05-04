@@ -1,4 +1,9 @@
 <?php
+/**
+ * Author: Todd Motto | @toddmotto
+ * URL: html5blank.com | @html5blank
+ * Custom functions, support, custom post types and more.
+ */
 
 /*------------------------------------*\
     External Modules/Files
@@ -90,20 +95,16 @@ function html5blank_header_scripts()
         if (HTML5_DEBUG) {
             // jQuery
             wp_deregister_script('jquery');
-            wp_register_script('jquery', get_template_directory_uri() . '/assets/scripts/vendor/jquery.js', array(), '3.2.1');
-
-            // Conditionizr
-            wp_register_script('conditionizr', get_template_directory_uri() . '/assets/scripts/vendor/conditionizr.js', array(), '4.5.0');
+            wp_register_script('jquery', get_template_directory_uri() . 'src/assets/scripts/vendor/jquery.js', array(), '1.11.1');
 
             // Modernizr
-            wp_register_script('modernizr', get_template_directory_uri() . '/assets/scripts/vendor/modernizr.js', array(), '3.5.0');
+            wp_register_script('modernizr', get_template_directory_uri() . 'src/assets/scripts/vendor/modernizr.js', array(), '2.8.3');
 
             // Custom scripts
             wp_register_script(
                 'html5blankscripts',
-                get_template_directory_uri() . '/assets/scripts/scripts.js',
+                get_template_directory_uri() . '/js/scripts.js',
                 array(
-                    'conditionizr',
                     'modernizr',
                     'jquery'),
                 '1.0.0');
@@ -136,7 +137,7 @@ function html5blank_styles()
 {
     if (HTML5_DEBUG) {
         // normalize-css
-        wp_register_style('normalize', get_template_directory_uri() . '/assets/css/vendor/normalize.css', array(), '6.0.0');
+        wp_register_style('normalize', get_template_directory_uri() . '/assets/css/vendor/normalize.css', array(), '7.0.0');
 
         // Custom CSS
         wp_register_style('html5blank', get_template_directory_uri() . '/assets/css/styles.css', array('normalize'), '1.0');
@@ -315,7 +316,7 @@ function remove_thumbnail_dimensions( $html )
 // Custom Gravatar in Settings > Discussion
 function html5blankgravatar ($avatar_defaults)
 {
-    $myavatar = get_template_directory_uri() . '/assets/img/gravatar.jpg';
+    $myavatar = get_template_directory_uri() . '/img/gravatar.jpg';
     $avatar_defaults[$myavatar] = "Custom Gravatar";
     return $avatar_defaults;
 }

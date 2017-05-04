@@ -2,7 +2,7 @@
 	'use strict';
 
 	$(function () {
-		console.log('This is a test');
+		// DOM ready, take it away
 	});
 
 } ( this, jQuery ));

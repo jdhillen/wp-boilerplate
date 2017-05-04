@@ -1,1 +1,0 @@
-node-sass -o src/assets/css/ src/assets/scss/ --source-map true -w

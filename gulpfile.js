@@ -11,7 +11,7 @@ let merge       = require('merge-stream');
 // Project
 const PROJECT =  {
 	NAME  : 'wp-boilerplate',			// Name of your Project
-	URL   : 'http://nullpixel.dev',		// URL of your Project
+	URL   : 'nullpixel.dev',			// URL of your Project
 	WATCH : './src/**/*.php',			// Path to watch for php template changes
 	DEST  : './dist/'
 };
@@ -29,7 +29,12 @@ const SCRIPTS = {
 	SRC    : './src/assets/scripts/scripts.js',					// Path to main .js file
 	VENDOR : './src/assets/scripts/vendor/*.js',				// Path to vendor .js files
 	WATCH  : './src/assets/scripts/{!(vendor)/*.js,*.js}',		// Path of js files to watch
-	DEST   : './src/assets/js/'
+	DEST   : './src/assets/js/',
+	ALL	   : [
+		'./src/assets/scripts/vendor/modernizr.js',
+		'./src/assets/scripts/vendor/jquery.js',
+		'./src/assets/scripts/scripts.js'
+	]
 };
 
 // Files to copy to the 'Dist' folder
@@ -82,15 +87,11 @@ let env = (() => {
 
 /* ==|== Task - browser-sync ==================================================================== */
 gulp.task('browser-sync', () => {
-	let myFiles = [ PROJECT.WATCH, STYLES.WATCH, SCRIPTS.WATCH ];
-
 	browserSync.init({
-		files: myFiles,
-		proxy: {
-			target: PROJECT.URL
-		},
-		open: true,
-		injectChanges: true,
+		files: [ PROJECT.WATCH, STYLES.WATCH, SCRIPTS.WATCH ],
+		proxy: PROJECT.URL,
+		host: PROJECT.URL,
+		open: 'external'
 	});
 });
 
@@ -101,7 +102,7 @@ gulp.task( 'env:prod', () => {
 });
 
 
-/* ==|== Task - template ======================================================================== */
+/* ==|== Task - env:template ==================================================================== */
 gulp.task( 'env:template', () => {
 	console.log( '`template` task run in `' + env + '` environment' );
 
@@ -167,11 +168,24 @@ gulp.task( 'lint:js', () => {
 /* ==|== Task - build:js ======================================================================== */
 gulp.task( 'build:js', ['lint:js'], () => {
 	return gulp
-		.src( SCRIPTS.SRC )
+		.src( SCRIPTS.ALL )
 		.pipe( $.concat( 'scripts.min.js' ) )
 		.pipe( $.uglify() )
 		.on( 'error', e => { console.log(e); })
 		.pipe( gulp.dest( SCRIPTS.DEST ) );
+});
+
+
+/* ==|== Task - build =========================================================================== */
+gulp.task( 'build', () => {
+	sequence(
+		'env:prod',
+	  	'env:template',
+		'build:clean',
+	  	'build:styles',
+	  	'build:js',
+	  	'build:copy'
+	);
 });
 
 
@@ -186,29 +200,11 @@ gulp.task( 'build:copy', () => {
 /* ==|== Task - watch =========================================================================== */
 gulp.task( 'watch', ['env:template', 'compile:scss', 'lint:js', 'browser-sync'], () => {
 
-	// Watch Browser-Sync for Changes
-	gulp.watch().on( 'change', file => {
-		browserSync.notify( file.path );
-	});
-
 	// Watch SCSS Files for Changes
 	gulp.watch( STYLES.WATCH, ['compile:scss'] );
 
 	// Watch Javascript Files for Changes
 	gulp.watch( SCRIPTS.WATCH, ['lint:js'] );
-});
-
-
-/* ==|== Task - build =========================================================================== */
-gulp.task( 'build', () => {
-	sequence(
-		'env:prod',
-	  	'env:template',
-		'build:clean',
-	  	'build:styles',
-	  	'build:js',
-	  	'build:copy'
-	);
 });
 
 

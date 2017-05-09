@@ -108,7 +108,7 @@ gulp.task( 'env:template', () => {
 
     var is_debug = ( env === 'prod' ? 'false' : 'true' );
 
-    return gulp.src( 'src/dev-templates/is-debug.php' )
+    return gulp.src( './src/dev-templates/is-debug.php' )
         .pipe( $.template({ is_debug: is_debug }) )
         .pipe( gulp.dest( 'src/inc' ) );
 });

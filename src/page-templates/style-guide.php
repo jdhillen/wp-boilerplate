@@ -7,7 +7,7 @@
 <?php get_header(); ?>
 
 <main role="main" aria-label="Content">
-    
+
     <section class="row">
 		<h1><?php the_title(); ?></h1>
         <p class="lead">This page is filled with common HTML elements to be used to provide visual feedback whilst building CSS systems and frameworks.</p>
@@ -240,8 +240,7 @@
       <h2 class="docs-heading" data-magellan-target="embedded-audio"><a href="#embedded-audio"></a>Audio</h2>
       <div>
         <audio controls="">
-          <source src="http://demos.w3avenue.com/html5-unleashed-tips-tricks-and-techniques/demo-audio.ogg" type="audio/ogg">
-          <source src="http://demos.w3avenue.com/html5-unleashed-tips-tricks-and-techniques/demo-audio.mp3" type="audio/mp3">
+          <source src="https://p4.bcbits.com/download/track/a369abd6636fa2831cabab8a18d54ee6/mp3-128/2592979997?fsig=d16d43050aac5035344c86df360f3909&id=2592979997&stream=1&ts=1494374400.0&token=1494374460_508567aa0e1dec53b99f74403095dd449da20e9c" type="audio/mp3">
         </audio>
       </div>
     </section>

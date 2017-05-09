@@ -2,6 +2,7 @@
 <html <?php language_attributes(); ?> class="no-js">
 	<head>
 		<meta charset="<?php bloginfo('charset'); ?>">
+
 		<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' : '; } ?><?php bloginfo('name'); ?></title>
 
 		<link href="//www.google-analytics.com" rel="dns-prefetch">
@@ -14,32 +15,34 @@
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 
 		<?php wp_head(); ?>
-
 	</head>
+
 	<body <?php body_class(); ?>>
 
 		<!-- header -->
-		<div class="container">
+		<header class="header" role="banner">
 
-			<header class="header" role="banner">
+			<div class="container">
+				<div class="row">
 
-				<!-- logo -->
-				<div class="logo">
-					<a href="<?php echo home_url(); ?>">
-						<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="Logo" class="logo-img">
-					</a>
+					<!-- logo -->
+					<div class="logo">
+						<a href="<?php echo home_url(); ?>">
+							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="Logo" class="logo-img">
+						</a>
+					</div>
+					<!-- /logo -->
+
+					<!-- nav -->
+					<nav class="nav" role="navigation">
+						<?php html5blank_nav(); ?>
+					</nav>
+					<!-- /nav -->
+
 				</div>
-				<!-- /logo -->
-
-				<!-- nav -->
-				<nav class="nav" role="navigation">
-					<?php html5blank_nav(); ?>
-				</nav>
-				<!-- /nav -->
-			</header>
-
-		</div>
+			</div>
+		</header>
 		<!-- /header -->
 
 		<!-- wrapper -->

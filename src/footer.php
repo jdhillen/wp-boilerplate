@@ -1,5 +1,4 @@
 
-
 		</div>
 		<!-- /wrapper -->
 
@@ -8,12 +7,9 @@
 
 			<div class="container">
 				<div class="row">
-					<!-- copyright -->
-					<div class="copyright">
-						&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Powered by', 'html5blank'); ?>
-						<a href="//wordpress.org">WordPress</a> &amp; <a href="//html5blank.com">HTML5 Blank</a>.
-					</div>
-					<!-- /copyright -->
+
+					<div class="copyright">&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>.</div>
+
 				</div>
 			</div>
 

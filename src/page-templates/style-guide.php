@@ -1,174 +1,144 @@
-<?php
-  /* Template Name: Style Guide */
-?>
-
 <?php /* Template Name: Style Guide */ ?>
 
 <?php get_header(); ?>
 
-<main role="main" aria-label="Content">
+<main role="main" class="style-guide">
 
-    <section class="row">
+    <section>
 		<h1><?php the_title(); ?></h1>
-        <p class="lead">This page is filled with common HTML elements to be used to provide visual feedback whilst building CSS systems and frameworks.</p>
-        <hr/>
+        <p>This page is filled with common HTML elements to be used to provide visual feedback whilst building CSS systems and frameworks.</p>
     </section>
 
 
     <section id="text-paragraphs">
-      <h2 class="docs-heading" data-magellan-target="text-paragraphs"><a href="#text-paragraphs"></a>Paragraphs</h2>
-      <p>A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
+        <h2>Paragraphs</h2>
+        <p>A paragraph (from the Greek paragraphos, "to write beside" or "written beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
     </section>
 
-    <hr>
 
     <section id="text-heading">
-      <h2 class="docs-heading" data-magellan-target="text-heading"><a href="#text-heading"></a>Headings</h2>
-      <h1>h1. This is a very large header.</h1>
-      <h2>h2. This is a large header.</h2>
-      <h3>h3. This is a medium header.</h3>
-      <h4>h4. This is a moderate header.</h4>
-      <h5>h5. This is a small header.</h5>
-      <h6>h6. This is a tiny header.</h6>
-      <h1>
-        <small>h1. This is a very large header segment.</small>
-      </h1>
-      <h2>
-        <small>h2. This is a large header segment.</small>
-      </h2>
-      <h3>
-        <small>h3. This is a medium header segment.</small>
-      </h3>
-      <h4>
-        <small>h4. This is a moderate header segment.</small>
-      </h4>
-      <h5>
-        <small>h5. This is a small header segment.</small>
-      </h5>
-      <h6>
-        <small>h6. This is a tiny header segment.</small>
-      </h6>
+        <h2>Headings</h2>
+        <h1>h1. This is a very large header.</h1>
+        <h2>h2. This is a large header.</h2>
+        <h3>h3. This is a medium header.</h3>
+        <h4>h4. This is a moderate header.</h4>
+        <h5>h5. This is a small header.</h5>
+        <h6>h6. This is a tiny header.</h6>
     </section>
 
-    <hr>
 
     <section id="text-blockquotes">
-      <h2 class="docs-heading" data-magellan-target="text-blockquotes"><a href="#text-blockquotes"></a>Blockquotes</h2>
-      <blockquote>
-        <p>A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text.</p>
-        <p>It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom.</p>
-        <cite>
-          <a href="#">Said no one, ever</a>
-        </cite>
-      </blockquote>
+        <h2>Blockquotes</h2>
+        <blockquote>
+          <p>A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text.</p>
+          <p>It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom.</p>
+          <cite>
+            <a href="#">Said no one, ever</a>
+          </cite>
+        </blockquote>
     </section>
 
-    <hr>
 
     <section id="text-lists">
-      <h2 class="docs-heading" data-magellan-target="text-lists"><a href="#text-lists"></a>Lists</h2>
-      <div>
-        <h4>Definition list</h4>
+        <h2>Lists</h2>
+
         <dl>
           <dt>Definition List Title</dt>
           <dd>This is a definition list division.</dd>
         </dl>
-      </div>
-      <div>
-        <h4>Ordered List</h4>
+
         <ol>
           <li>List Item 1</li>
           <li>List Item 2</li>
           <li>List Item 3</li>
         </ol>
-      </div>
-      <div>
-        <h4>Unordered List</h4>
+
         <ul>
           <li>List Item 1</li>
           <li>List Item 2</li>
           <li>List Item 3</li>
         </ul>
-      </div>
     </section>
 
-    <hr>
 
     <section id="text-hr">
-      <h2 class="docs-heading" data-magellan-target="text-hr"><a href="#text-hr"></a>Horizontal Rules</h2>
-      <hr>
-      <hr class="dotted"/>
-      <hr class="dashed"/>
+        <h2>Horizontal Rules</h2>
+        <hr>
+        <hr class="dotted"/>
+        <hr class="dashed"/>
     </section>
 
-    <hr>
 
     <section id="text-tables">
-      <h2 class="docs-heading" data-magellan-target="text-tables"><a href="#text-tables"></a>Tabular Data</h2>
-      <table>
-        <thead>
-          <tr>
-            <th width="200">Table Header</th>
-            <th>Table Header</th>
-            <th width="150">Table Header</th>
-            <th width="150">Table Header</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Content Goes Here</td>
-            <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-            <td>Content Goes Here</td>
-            <td>Content Goes Here</td>
-          </tr>
-          <tr>
-            <td>Content Goes Here</td>
-            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-            <td>Content Goes Here</td>
-            <td>Content Goes Here</td>
-          </tr>
-          <tr>
-            <td>Content Goes Here</td>
-            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-            <td>Content Goes Here</td>
-            <td>Content Goes Here</td>
-          </tr>
-        </tbody>
-      </table>
+        <h2>Tabular Data</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th width="200">Table Header</th>
+                    <th>Table Header</th>
+                    <th width="150">Table Header</th>
+                    <th width="150">Table Header</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Content Goes Here</td>
+                    <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+                    <td>Content Goes Here</td>
+                    <td>Content Goes Here</td>
+                </tr>
+                <tr>
+                    <td>Content Goes Here</td>
+                    <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+                    <td>Content Goes Here</td>
+                    <td>Content Goes Here</td>
+                </tr>
+                <tr>
+                    <td>Content Goes Here</td>
+                    <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+                    <td>Content Goes Here</td>
+                    <td>Content Goes Here</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
-    <hr>
 
     <section id="text-code">
-      <h2 class="docs-heading" data-magellan-target="text-code"><a href="#text-code"></a>Code</h2>
-      <div>
+        <h2>Code</h2>
         <p>
-          <strong>Keyboard input:</strong>
-          <kbd>Cmd</kbd>
-        </p>
-        <p>
-          <strong>Inline code:</strong>
-          <code>&lt;div&gt;code&lt;/div&gt;</code>
-        </p>
-        <p>
-          <strong>Sample output:</strong>
-          <samp>This is sample output from a computer program.</samp>
+            <strong>Keyboard input:</strong>
+            <kbd>Cmd</kbd>
         </p>
 
-        <h4>Pre-formatted text</h4>
+        <p>
+            <strong>Inline code:</strong>
+            <code>&lt;div&gt;code&lt;/div&gt;</code>
+        </p>
+
+        <p>
+            <strong>Variable:</strong>
+            <var>Variable</var>
+        </p>
+
+        <p>
+            <strong>Sample output:</strong>
+            <samp>This is sample output from a computer program.</samp>
+        </p>
+
+
+        <strong>Preformatted Text:</strong>
         <pre>
-          P R E F O R M A T T E D T E X T
-          ! " # $ % &amp; ' ( ) * + , - . /
-          0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
-          @ A B C D E F G H I J K L M N O
-          P Q R S T U V W X Y Z [ \ ] ^ _
-          ` a b c d e f g h i j k l m n o
-          p q r s t u v w x y z { | } ~
+            P R E F O R M A T T E D T E X T
+            ! " # $ % &amp; ' ( ) * + , - . /
+            0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
+            @ A B C D E F G H I J K L M N O
+            P Q R S T U V W X Y Z [ \ ] ^ _
+            ` a b c d e f g h i j k l m n o
+            p q r s t u v w x y z { | } ~
         </pre>
-      </div>
     </section>
 
-    <hr>
 
     <section id="text-inline">
       <h2 class="docs-heading" data-magellan-target="text-inline"><a href="#text-inline"></a>Inline Elements</h2>
@@ -211,7 +181,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="embedded-images">
       <h2 class="docs-heading" data-magellan-target="embedded-images"><a href="#embedded-images"></a>Images</h2>
@@ -234,7 +203,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="embedded-audio">
       <h2 class="docs-heading" data-magellan-target="embedded-audio"><a href="#embedded-audio"></a>Audio</h2>
@@ -245,7 +213,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="embedded-video">
       <h2 class="docs-heading" data-magellan-target="embedded-video"><a href="#embedded-video"></a>Video</h2>
@@ -258,7 +225,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="embedded-canvas">
       <h2 class="docs-heading" data-magellan-target="embedded-canvas"><a href="#embedded-canvas"></a>Canvas</h2>
@@ -269,7 +235,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="embedded-meter">
       <h2 class="docs-heading" data-magellan-target="embedded-meter"><a href="#embedded-meter"></a>Meter</h2>
@@ -278,7 +243,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="embedded-progress">
       <h2 class="docs-heading" data-magellan-target="embedded-progress"><a href="#embedded-progress"></a>Progress</h2>
@@ -287,7 +251,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="embedded-svg">
       <h2 class="docs-heading" data-magellan-target="embedded-svg"><a href="#embedded-svg"></a>SVG</h2>
@@ -298,7 +261,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="embedded-iframe">
       <h2 class="docs-heading" data-magellan-target="embedded-iframe"><a href="#embedded-iframe"></a>iFrame</h2>
@@ -309,7 +271,6 @@
       </div>
     </section>
 
-    <hr>
 
     <section id="form-input">
       <h2 class="docs-heading" data-magellan-target="form-input"><a href="#form-input"></a>Input Fields</h2>
@@ -347,7 +308,6 @@
       </form>
     </section>
 
-    <hr>
 
     <section id="form-select">
       <h2 class="docs-heading" data-magellan-target="form-select"><a href="#form-select"></a>Select Menus</h2>
@@ -365,7 +325,6 @@
       </form>
     </section>
 
-    <hr>
 
     <section id="form-checkbox">
       <h2 class="docs-heading" data-magellan-target="form-checkbox"><a href="#form-checkbox"></a>Checkboxes</h2>
@@ -380,7 +339,6 @@
       </form>
     </section>
 
-    <hr>
 
     <section id="form-radio">
       <h2 class="docs-heading" data-magellan-target="form-radio"><a href="#form-radio"></a>Radio Buttons</h2>
@@ -395,7 +353,6 @@
       </form>
     </section>
 
-    <hr>
 
     <section id="form-textareas">
       <h2 class="docs-heading" data-magellan-target="form-textareas"><a href="#form-textareas"></a>Textareas</h2>
@@ -409,7 +366,6 @@
       </form>
     </section>
 
-    <hr>
 
     <section id="form-html5inputs">
       <h2 class="docs-heading" data-magellan-target="form-html5inputs"><a href="#form-html5inputs"></a>HTML5 Inputs</h2>
@@ -444,7 +400,6 @@
       </form>
     </section>
 
-    <hr>
 
     <section id="form-action">
       <h2 class="docs-heading" data-magellan-target="form-action"><a href="#form-action"></a>Action Buttons</h2>

@@ -137,6 +137,44 @@ pre {
   padding: 0;
   margin: 0; }
 
+img {
+  border: 0;
+  display: block;
+  padding: 0;
+  margin: 0; }
+
+figure {
+  padding: 0;
+  margin: 0;
+  text-align: center; }
+  figure img {
+    margin: 0 auto; }
+
+canvas {
+  display: block; }
+
+meter {
+  width: 100%;
+  display: block; }
+
+progress {
+  width: 100%;
+  display: block; }
+
+svg {
+  display: block; }
+
+iframe {
+  display: block;
+  border-width: 1px;
+  border-style: inset;
+  border-color: initial;
+  border-image: initial; }
+
+form fieldset {
+  padding: 0;
+  margin: 0; }
+
 /*
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache
@@ -259,13 +297,13 @@ pre {
 .button,
 button {
   display: inline-block;
-  height: 38px;
+  height: 48px;
   padding: 0 30px;
   color: #555555;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
-  line-height: 38px;
+  line-height: 48px;
   letter-spacing: .1rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -278,13 +316,13 @@ button {
 
 input[type="submit"], input[type="reset"], input[type="button"] {
   display: inline-block;
-  height: 38px;
+  height: 48px;
   padding: 0 30px;
   color: #555555;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
-  line-height: 38px;
+  line-height: 48px;
   letter-spacing: .1rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -350,8 +388,8 @@ input[type="submit"].button-primary:focus, input[type="reset"].button-primary:fo
   background-color: #1eaedb;
   border-color: #1eaedb; }
 
-input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"] {
-  height: 38px;
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], input[type="color"], input[type="date"], input[type="month"], input[type="week"], input[type="datetime"], input[type="datetime-local"] {
+  height: 48px;
   padding: 6px 10px;
   background-color: #fff;
   border: 1px solid #d1d1d1;
@@ -369,7 +407,7 @@ select {
   box-shadow: none;
   box-sizing: border-box; }
 
-input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"] {
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], input[type="color"], input[type="date"], input[type="month"], input[type="week"], input[type="datetime"], input[type="datetime-local"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; }
@@ -382,7 +420,7 @@ textarea {
   padding-top: 6px;
   padding-bottom: 6px; }
 
-input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus {
+input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus {
   border: 1px solid #33c3f0;
   outline: 0; }
 
@@ -466,7 +504,8 @@ button,
 input,
 textarea,
 select,
-fieldset {
+fieldset,
+legend {
   margin-bottom: 1.5rem; }
 
 pre,
@@ -480,9 +519,13 @@ ol,
 form {
   margin-bottom: 2.5rem; }
 
-.style-guide section h2:first-of-type {
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #e1e1e1; }
+.style-guide section {
+  margin-bottom: 2.5rem; }
+  .style-guide section h2:first-of-type {
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e1e1e1; }
+  .style-guide section div {
+    margin-bottom: 2.5rem; }
 
 /*# sourceMappingURL=styles.css.map */

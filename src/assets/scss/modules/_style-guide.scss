@@ -5,11 +5,16 @@
 .style-guide {
 
     section {
+        margin-bottom: 2.5rem;
 
         h2:first-of-type {
             padding-bottom: 1rem;
             margin-bottom: 1.5rem;
             border-bottom: 1px solid $light-grey;
+        }
+
+        div {
+            margin-bottom: 2.5rem;
         }
 
     }

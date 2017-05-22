@@ -220,7 +220,6 @@ img {
 }
 
 figure {
-    @include reset-box;
     text-align: center;
 
     img {
@@ -331,7 +330,7 @@ form {
         }
 
         textarea {
-            
+
         }
     }
 }

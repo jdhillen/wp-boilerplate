@@ -2,47 +2,46 @@
 // ---- Styles ----
 //==================================================================================================
 
-// ==|== Global ====================================================================================
-// @import 'modules/variables';
-@import 'modules/mixins';
-@import 'modules/fonts';
+// New Structure - https://sass-guidelin.es/#architecture
+
+// ==|== Helpers ===================================================================================
+@import
+    'abstracts/variables',
+    'abstracts/functions',
+    'abstracts/mixins',
+    'abstracts/utils';
 
 
-// ==|== Base Files ================================================================================
-@import 'base/variables';
-@import 'base/functions';
-@import 'base/base-styles';
-@import 'base/utils';
-@import 'base/typography';
-@import 'base/html-elements';
+// ==|== Base ======================================================================================
+@import
+    // 'base/reset',
+    'base/base-styles',
+    'base/fonts',
+    'base/typography',
+    'base/html-elements';
 
 
-// ==|== Modules ===================================================================================
-@import 'modules/grid';
-@import 'modules/buttons';
-@import 'modules/forms';
-@import 'modules/lists';
-@import 'modules/code';
-@import 'modules/tables';
-@import 'modules/spacing';
-@import 'modules/media-queries';
-@import 'modules/style-guide';
+// ==|== Layout ===================================================================================
+@import
+    'layout/grid',
+    'layout/spacing',
+    'layout/media-queries',
+    'layout/wordpress',
+    'layout/header',
+    'layout/nav',
+    'layout/sidebar',
+    'layout/footer';
 
 
-// ==|== Modules ===================================================================================
+// ==|== Components ================================================================================
+@import
+    'components/buttons',
+    'components/code',
+    'components/tables',
+    'components/forms',
+    'components/lists';
 
-// // Modules
-// @import 'modules/variables';
-// @import 'modules/mixins';
-// @import 'modules/fonts';
 
-// // Partials
-// @import 'partials/reset';
-// @import 'partials/wordpress';
-// @import 'partials/utils';
-// @import 'partials/wrapper';
-// @import 'partials/header';
-// @import 'partials/nav';
-// @import 'partials/sidebar';
-// @import 'partials/footer';
-// @import 'partials/print';
+// ==|== Pages =====================================================================================
+@import
+    'pages/style-guide';

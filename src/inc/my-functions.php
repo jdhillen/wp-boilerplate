@@ -98,15 +98,11 @@ function html5blank_header_scripts()
 
             wp_register_script('jquery', get_template_directory_uri() . '/assets/scripts/vendor/jquery.js', array(), '3.2.1');
 
-            // Modernizr
-            wp_register_script('modernizr', get_template_directory_uri() . '/assets/scripts/vendor/modernizr.js', array(), '3.5.0');
-
             // Custom scripts
             wp_register_script(
                 'html5blankscripts',
                 get_template_directory_uri() . '/assets/scripts/scripts.js',
                 array(
-                    'modernizr',
                     'jquery'
                 ),
                 '1.0.0'
@@ -316,6 +312,12 @@ function remove_thumbnail_dimensions( $html )
     return $html;
 }
 
+// Remove WP Logo from the admin bar
+function admin_bar_remove_logo() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu( 'wp-logo' );
+}
+
 // Custom Gravatar in Settings > Discussion
 function html5blankgravatar ($avatar_defaults)
 {
@@ -391,6 +393,8 @@ add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
 add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
+add_action( 'wp_before_admin_bar_render', 'admin_bar_remove_logo', 0 ); // Remove WP Logo from admin bar
+
 
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds

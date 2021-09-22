@@ -4,44 +4,37 @@
 
 // New Structure - https://sass-guidelin.es/#architecture
 
-// ==|== Helpers ===================================================================================
-@import
-    'abstracts/variables',
-    'abstracts/functions',
-    'abstracts/mixins',
-    'abstracts/utils';
+// ==|== Vendor ====================================================================================
+@import 'vendor/normalize';
 
+// ==|== Helpers ===================================================================================
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/utils';
 
 // ==|== Base ======================================================================================
-@import
-    // 'base/reset',
-    'base/base-styles',
-    'base/fonts',
-    'base/typography',
-    'base/html-elements';
-
+@import 'base/base-styles';
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/html-elements';
 
 // ==|== Layout ===================================================================================
-@import
-    'layout/grid',
-    'layout/spacing',
-    'layout/media-queries',
-    'layout/wordpress',
-    'layout/header',
-    'layout/nav',
-    'layout/sidebar',
-    'layout/footer';
-
+@import 'layout/grid';
+@import 'layout/spacing';
+@import 'layout/media-queries';
+@import 'layout/wordpress';
+@import 'layout/header';
+@import 'layout/nav';
+@import 'layout/sidebar';
+@import 'layout/footer';
 
 // ==|== Components ================================================================================
-@import
-    'components/buttons',
-    'components/code',
-    'components/tables',
-    'components/forms',
-    'components/lists';
-
+@import 'components/buttons';
+@import 'components/code';
+@import 'components/tables';
+@import 'components/forms';
+@import 'components/lists';
 
 // ==|== Pages =====================================================================================
-@import
-    'pages/style-guide';
+@import 'pages/style-guide';

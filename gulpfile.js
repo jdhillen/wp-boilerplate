@@ -8,6 +8,9 @@ const sourcemaps = require('gulp-sourcemaps');
 const browsersync = require('browser-sync').create();
 const del = require('del');
 const rename = require('gulp-rename');
+const eslint = require('gulp-eslint');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
 
 /* ==|== Template Config ======================================================================== */
 // Project
@@ -33,7 +36,6 @@ const SCRIPTS = {
   WATCH: './src/assets/scripts/{!(vendor)/*.js,*.js}', // Path of js files to watch
   DEST: './src/assets/js/',
   ALL: [
-    './src/assets/scripts/vendor/modernizr.js',
     './src/assets/scripts/vendor/jquery.js',
     './src/assets/scripts/scripts.js'
   ]
@@ -55,40 +57,7 @@ const COPY_FILES = [
 // Files or Folders to clean
 const TO_CLEAN = ['.tmp', PROJECT.DEST];
 
-// /* ==|== Task - lint:js ========================================================================= */
-// gulp.task("lint:js", () => {
-// 	return gulp
-// 		.src(SCRIPTS.WATCH)
-// 		.pipe($.jshint())
-// 		.pipe($.jshint.reporter("jshint-stylish"))
-// 		.pipe($.jshint.reporter("fail"));
-// });
-
-// /* ==|== Task - build:js ======================================================================== */
-// gulp.task("build:js", ["lint:js"], () => {
-// 	return gulp
-// 		.src(SCRIPTS.ALL)
-// 		.pipe($.concat("scripts.min.js"))
-// 		.pipe($.uglify())
-// 		.on("error", (e) => {
-// 			console.log(e);
-// 		})
-// 		.pipe(gulp.dest(SCRIPTS.DEST));
-// });
-
-// /* ==|== Task - build =========================================================================== */
-// gulp.task("build", () => {
-// 	sequence(
-// 		"env:prod",
-// 		"env:template",
-// 		"build:clean",
-// 		"build:styles",
-// 		"build:js",
-// 		"build:copy"
-// 	);
-// });
-
-/* ==|== Task - BrowserSync ============================================================================================================= */
+/* ==|== Task - BrowserSync ===================================================================== */
 function browserSync() {
   browsersync.init({
     files: [PROJECT.WATCH, STYLES.WATCH, SCRIPTS.WATCH],
@@ -98,12 +67,12 @@ function browserSync() {
   });
 }
 
-/* ==|== Task - Reload ================================================================================================================== */
+/* ==|== Task - Reload ========================================================================== */
 function reload() {
   browsersync.reload();
 }
 
-/* ==|== Task - styles ================================================================================================================== */
+/* ==|== Task - styles ========================================================================== */
 function styles() {
   return gulp
     .src(STYLES.SRC)
@@ -117,28 +86,51 @@ function styles() {
     .pipe(browsersync.stream());
 }
 
-/* ==|== Task - build:clean ============================================================================================================= */
+/* ==|== Task - Lint ============================================================================ */
+function lint() {
+  return gulp
+    .src([SCRIPTS.WATCH])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+}
+
+/* ==|== Task - Scripts ========================================================================= */
+function scripts() {
+  return gulp
+    .src(SCRIPTS.ALL)
+    .pipe(concat('scripts.js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(gulp.dest(SCRIPTS.DEST))
+    .pipe(browsersync.stream());
+}
+
+/* ==|== Task - build:clean ===================================================================== */
 function clean() {
   return del(TO_CLEAN);
 }
 
-// /* ==|== Task - Copy ================================================================================================================= */
+// /* ==|== Task - Copy ========================================================================= */
 function copy() {
   return gulp.src(COPY_FILES, { base: 'src' }).pipe(gulp.dest(PROJECT.DEST));
 }
 
-/* ==|== Task - Watch =================================================================================================================== */
+/* ==|== Task - Watch =========================================================================== */
 function watch() {
   browserSync();
   gulp.watch(STYLES.WATCH, styles);
   gulp.watch(PROJECT.WATCH, reload);
 }
 
-/* ==|== Task - Build =================================================================================================================== */
-const build = gulp.series(clean, styles, copy);
+/* ==|== Complex Tasks=========================================================================== */
+const js = gulp.series(lint, scripts);
+const build = gulp.series(clean, styles, js, copy);
 
-/* ==|== Exports ======================================================================================================================== */
-exports.styles = styles;
+/* ==|== Exports ================================================================================ */
 exports.clean = clean;
+exports.styles = styles;
+exports.js = js;
+exports.watch = watch;
 exports.build = build;
 exports.default = watch;

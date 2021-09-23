@@ -8,11 +8,13 @@
 * Sass Version by Seth Coelen https://github.com/whatsnewsaes
 */
 
+@use 'sass:math';
+
 @function grid-column-width($n) {
-	@return $column-width * $n -
-		($column-margin * ($total-columns - $n) / $total-columns);
+  @return $column-width * $n -
+    ($column-margin * math.div(($total-columns - $n), $total-columns));
 }
 
 @function grid-offset-length($n) {
-	@return grid-column-width($n) + $column-margin;
+  @return grid-column-width($n) + $column-margin;
 }

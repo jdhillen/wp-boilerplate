@@ -1,6 +1,8 @@
 // Variables
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
+@use 'sass:math';
+
 // Breakpoints
 $bp-larger-than-mobile: 'min-width: 400px' !default;
 $bp-larger-than-phablet: 'min-width: 550px' !default;
@@ -26,8 +28,8 @@ $container-width-larger-than-mobile: 85% !default;
 $container-width-larger-than-phablet: 80% !default;
 $total-columns: 12 !default;
 $column-width: math.div(
-	100,
-	$total-columns
+  100,
+  $total-columns
 ) !default; // calculates individual column width based off of # of columns
 $column-margin: 4% !default; // space between columns
 

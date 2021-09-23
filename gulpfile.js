@@ -72,8 +72,19 @@ function reload() {
   browsersync.reload();
 }
 
-/* ==|== Task - styles ========================================================================== */
+/* ==|== Task - Styles ========================================================================== */
 function styles() {
+  return gulp
+    .src(STYLES.SRC)
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .on('error', sass.logError)
+    .pipe(gulp.dest(STYLES.DEST))
+    .pipe(browsersync.stream());
+}
+
+/* ==|== Task - Build:Styles ==================================================================== */
+function buildStyles() {
   return gulp
     .src(STYLES.SRC)
     .pipe(sourcemaps.init())
@@ -95,8 +106,8 @@ function lint() {
     .pipe(eslint.failAfterError());
 }
 
-/* ==|== Task - Scripts ========================================================================= */
-function scripts() {
+/* ==|== Task - Build:Scripts =================================================================== */
+function buildScripts() {
   return gulp
     .src(SCRIPTS.ALL)
     .pipe(concat('scripts.js'))
@@ -119,13 +130,14 @@ function copy() {
 /* ==|== Task - Watch =========================================================================== */
 function watch() {
   browserSync();
+  styles();
   gulp.watch(STYLES.WATCH, styles);
   gulp.watch(PROJECT.WATCH, reload);
 }
 
 /* ==|== Complex Tasks=========================================================================== */
-const js = gulp.series(lint, scripts);
-const build = gulp.series(clean, styles, js, copy);
+const js = gulp.series(lint, buildScripts);
+const build = gulp.series(clean, buildStyles, buildScripts, copy);
 
 /* ==|== Exports ================================================================================ */
 exports.clean = clean;
